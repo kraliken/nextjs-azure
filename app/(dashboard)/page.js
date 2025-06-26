@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import TodoStats from "@/components/TodoStats";
 import { getTodoStats } from "@/lib/actions/todo.actions";
 

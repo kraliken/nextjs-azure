@@ -1,4 +1,3 @@
-export const dynamic = 'force-dynamic';
 
 import { getTodos } from '@/lib/actions/todo.actions';
 import PersonalTodos from '@/components/PersonalTodos';
