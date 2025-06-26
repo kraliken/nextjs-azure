@@ -1,22 +1,43 @@
-import { cookies } from 'next/headers';
-import LogoutButton from './LogoutButton';
+'use client'
 
-const Navbar = async () => {
+import { Moon, Sun } from 'lucide-react';
+import { Button } from './ui/button';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from './ui/dropdown-menu';
+import { useTheme } from "next-themes";
+import { SidebarTrigger } from './ui/sidebar';
 
-    const cookieStore = await cookies();
-    const userRaw = cookieStore.get('user_data')?.value;
+const Navbar = () => {
 
-    const user = userRaw ? JSON.parse(userRaw) : null;
+    const { theme, setTheme } = useTheme();
 
     return (
-        <div className='flex justify-between items-center gap-2 w-full p-4 bg-amber-200'>
-            <div className='flex items-center gap-2'>
-                <div>{user?.username}</div>
-                <div className='text-sm'>{`(${user?.role})`}</div>
-
-            </div>
-            <LogoutButton />
-        </div>
+        <nav className="p-4 flex items-center justify-between sticky top-0 bg-background z-10">
+            <div className="flex justify-between items-center w-full">
+                <SidebarTrigger />
+                {/* <Link href="/">Dashboard</Link> */}
+                {/* THEME MENU */}
+                <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                        <Button variant="outline" size="icon">
+                            <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+                            <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+                            <span className="sr-only">Toggle theme</span>
+                        </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="end">
+                        <DropdownMenuItem onClick={() => setTheme("light")}>
+                            Light
+                        </DropdownMenuItem>
+                        <DropdownMenuItem onClick={() => setTheme("dark")}>
+                            Dark
+                        </DropdownMenuItem>
+                        <DropdownMenuItem onClick={() => setTheme("system")}>
+                            System
+                        </DropdownMenuItem>
+                    </DropdownMenuContent>
+                </DropdownMenu>
+            </div >
+        </nav >
     )
 }
 
