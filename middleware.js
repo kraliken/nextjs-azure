@@ -12,8 +12,6 @@ async function validateTokenWithAPI(token) {
       }
     });
 
-    console.log(response.data);
-
     return { valid: true };
 
   } catch (error) {
@@ -33,16 +31,21 @@ export async function middleware(request) {
   }
 
   // Ha van token és auth oldalon van, átirányítás a főoldalra
-  if (token && isAuthPage) {
+  if (token) {
 
     const { valid } = await validateTokenWithAPI(token);
 
     if (!valid) {
       const response = NextResponse.redirect(new URL('/sign-in', request.url));
       response.cookies.set('access_token', '', { maxAge: 0 }) // töröljük a rossz tokent
+      response.cookies.set('user_data', '', { maxAge: 0 }) // töröljük a rossz tokent
       return response
     }
-    return NextResponse.redirect(new URL('/', request.url));
+
+    if (isAuthPage) {
+      return NextResponse.redirect(new URL('/', request.url));
+    }
+    // return NextResponse.redirect(new URL('/', request.url));
   }
 
   return NextResponse.next();
