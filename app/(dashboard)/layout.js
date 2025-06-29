@@ -1,3 +1,7 @@
+export const metadata = {
+    title: "Dashboard",
+};
+
 import { cookies } from 'next/headers';
 import { AppSidebar } from "@/components/AppSidebar";
 import Navbar from "@/components/Navbar";

@@ -47,7 +47,7 @@ export function AppSidebar({ user }) {
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
-              <SidebarMenuItem>
+              {/* <SidebarMenuItem>
                 <SidebarMenuButton asChild>
                   <Link href="/">
                     <BriefcaseBusiness />
@@ -62,7 +62,7 @@ export function AppSidebar({ user }) {
                     development
                   </Link>
                 </SidebarMenuButton>
-              </SidebarMenuItem>
+              </SidebarMenuItem> */}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>

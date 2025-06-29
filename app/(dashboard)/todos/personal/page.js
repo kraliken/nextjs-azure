@@ -1,8 +1,8 @@
 
 import { getTodos } from '@/lib/actions/todo.actions';
 import PersonalTodos from '@/components/PersonalTodos';
-// import TodoSheet from '@/components/TodoSheet';
-// import TodoForm from '@/components/TodoForm';
+import TodoSheet from '@/components/TodoSheet';
+import TodoForm from '@/components/TodoForm';
 // import TodoFilter from '@/components/TodoFilter';
 
 const PersonalTodosPage = async ({ searchParams }) => {
@@ -14,10 +14,10 @@ const PersonalTodosPage = async ({ searchParams }) => {
     return (
         <div className="pt-6 max-w-7xl mx-auto">
             <div className="flex items-center justify-between mb-6">
-                <h1 className="text-2xl font-semibold mb-6 text-center">Personal Todos</h1>
-                {/* <TodoSheet title="Add Personal Todo">
+                <h1 className="text-lg sm:text-2xl font-semibold text-center">Personal</h1>
+                <TodoSheet title="Add Personal Todo">
                     <TodoForm category="personal" />
-                </TodoSheet> */}
+                </TodoSheet>
             </div>
 
             {/* {all_count > 0 && <TodoFilter currentStatus={status} category="personal" />} */}
