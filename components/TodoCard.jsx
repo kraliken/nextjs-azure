@@ -8,8 +8,8 @@ import { statusColor } from '@/lib/constants'
 import { format } from "date-fns";
 import TodoSheet from './TodoSheet'
 import TodoForm from './TodoForm'
-import TodoDescriptionDialog from './TodoDescriptionDialog'
 import TodoCardAlertDialog from './TodoCardAlertDialog'
+import TodoDescriptionDialog from './TodoDescriptionDialog'
 
 const TodoCard = ({ todo }) => {
 
