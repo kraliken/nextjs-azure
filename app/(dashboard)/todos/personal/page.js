@@ -3,7 +3,9 @@ import { getTodos } from '@/lib/actions/todo.actions';
 import PersonalTodos from '@/components/PersonalTodos';
 import TodoSheet from '@/components/TodoSheet';
 import TodoForm from '@/components/TodoForm';
-// import TodoFilter from '@/components/TodoFilter';
+import { Suspense } from 'react';
+import TodosLoading from '../../loading';
+import TodoFilter from '@/components/TodoFilter';
 
 const PersonalTodosPage = async ({ searchParams }) => {
 
@@ -20,11 +22,12 @@ const PersonalTodosPage = async ({ searchParams }) => {
                 </TodoSheet>
             </div>
 
-            {/* {all_count > 0 && <TodoFilter currentStatus={status} category="personal" />} */}
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <PersonalTodos todos={filtered} allTodosCount={all_count} />
-            </div>
+            {all_count > 0 && <TodoFilter currentStatus={status} category="personal" />}
+            <Suspense fallback={<TodosLoading />}>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <PersonalTodos todos={filtered} allTodosCount={all_count} />
+                </div>
+            </Suspense>
         </div>
     );
 };

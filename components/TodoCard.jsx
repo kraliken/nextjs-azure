@@ -6,9 +6,9 @@ import { Button } from './ui/button'
 import { Pencil } from 'lucide-react'
 import { statusColor } from '@/lib/constants'
 import { format } from "date-fns";
-// import TodoSheet from './TodoSheet'
-// import TodoForm from './TodoForm'
-// import TodoDescriptionDialog from './TodoDescriptionDialog'
+import TodoSheet from './TodoSheet'
+import TodoForm from './TodoForm'
+import TodoDescriptionDialog from './TodoDescriptionDialog'
 import TodoCardAlertDialog from './TodoCardAlertDialog'
 
 const TodoCard = ({ todo }) => {
@@ -36,11 +36,11 @@ const TodoCard = ({ todo }) => {
       </CardContent>
       <CardFooter className="flex justify-between gap-2 px-0 text-sm text-muted-foreground">
         <div>
-          {/* <TodoDescriptionDialog todo={todo} /> */}
+          <TodoDescriptionDialog todo={todo} />
         </div>
 
         <div className='flex gap-2'>
-          {/* <TodoSheet
+          <TodoSheet
             title="Edit Todo"
             trigger={
               <Button variant="ghost" size="sm" className="flex items-center gap-1 text-sm">
@@ -49,7 +49,7 @@ const TodoCard = ({ todo }) => {
             }
           >
             <TodoForm category={todo.category} todo={todo} />
-          </TodoSheet> */}
+          </TodoSheet>
           <TodoCardAlertDialog todo={todo} />
         </div>
       </CardFooter>
